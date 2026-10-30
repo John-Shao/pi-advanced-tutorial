@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 640" width="1080" height="640" font-family="system-ui, 'Segoe UI', 'Microsoft YaHei', sans-serif">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a5a6a"/>
+    </marker>
+  </defs>
+  <style>
+    .box { stroke-width: 1.6; rx: 10; }
+    .t { font-size: 15px; font-weight: 600; fill: #14202b; }
+    .s { font-size: 12px; fill: #3c4a57; }
+    .d { font-size: 11.5px; fill: #5b6a78; }
+    .band { font-size: 12.5px; font-weight: 700; fill: #6b7787; letter-spacing: 1; }
+    .edge { stroke: #4a5a6a; stroke-width: 2; fill: none; marker-end: url(#arr); }
+  </style>
+
+  <rect width="1080" height="640" fill="#f7f9fb"/>
+  <text x="24" y="34" font-size="20" font-weight="700" fill="#14202b">Pi monorepo：分层与内部依赖（v1.4.0，commit f09d01b8）</text>
+  <text x="24" y="56" class="s">箭头 = 直接依赖；每个框内“依赖：”一行取自该包 package.json 的 dependencies 实测结果。</text>
+
+  <!-- band labels -->
+  <text x="24" y="104" class="band">接口层</text>
+  <text x="24" y="264" class="band">运行层</text>
+  <text x="24" y="400" class="band">模型层</text>
+  <text x="24" y="536" class="band">基础层</text>
+
+  <!-- interface layer -->
+  <rect x="120" y="76" width="600" height="128" class="box" fill="#e8f0fe" stroke="#4b7bd6"/>
+  <text x="138" y="98" class="t">packages/coding-agent　@earendil-works/pi-coding-agent</text>
+  <text x="138" y="118" class="d">依赖：pi-agent-core, pi-ai, pi-tui, pi-codemode, pi-mcp, typebox</text>
+  <text x="138" y="136" class="s">CLI、组合根（core/sdk.ts）、会话与扩展运行时、模型运行时装配</text>
+  <rect x="140" y="148" width="132" height="42" class="box" fill="#ffffff" stroke="#4b7bd6"/>
+  <text x="206" y="166" class="s" text-anchor="middle">interactive</text>
+  <text x="206" y="182" class="d" text-anchor="middle">TUI 模式</text>
+  <rect x="282" y="148" width="110" height="42" class="box" fill="#ffffff" stroke="#4b7bd6"/>
+  <text x="337" y="166" class="s" text-anchor="middle">rpc</text>
+  <text x="337" y="182" class="d" text-anchor="middle">JSONL 双向</text>
+  <rect x="402" y="148" width="132" height="42" class="box" fill="#ffffff" stroke="#4b7bd6"/>
+  <text x="468" y="166" class="s" text-anchor="middle">json / print</text>
+  <rect x="544" y="148" width="156" height="42" class="box" fill="#ffffff" stroke="#4b7bd6"/>
+  <text x="622" y="166" class="s" text-anchor="middle">TypeScript SDK</text>
+
+  <!-- runtime layer -->
+  <rect x="120" y="236" width="240" height="112" class="box" fill="#e9f7ef" stroke="#2f9e6b"/>
+  <text x="138" y="258" class="t">packages/agent</text>
+  <text x="138" y="276" class="d">依赖：pi-ai, typebox</text>
+  <text x="138" y="296" class="s">pi-agent-core：智能体循环、</text>
+  <text x="138" y="314" class="s">工具调用、消息状态</text>
+  <text x="138" y="334" class="d">agent.ts / agent-loop.ts / types.ts</text>
+
+  <rect x="380" y="236" width="160" height="112" class="box" fill="#e9f7ef" stroke="#2f9e6b"/>
+  <text x="460" y="258" class="t" text-anchor="middle">packages/tui</text>
+  <text x="460" y="278" class="d" text-anchor="middle">运行时依赖：无</text>
+  <text x="460" y="300" class="s" text-anchor="middle">差分渲染、组件、</text>
+  <text x="460" y="318" class="s" text-anchor="middle">键位、颜色、图像、</text>
+  <text x="460" y="336" class="s" text-anchor="middle">原生模块</text>
+
+  <rect x="560" y="236" width="200" height="112" class="box" fill="#e9f7ef" stroke="#2f9e6b"/>
+  <text x="660" y="258" class="t" text-anchor="middle">packages/codemode</text>
+  <text x="660" y="278" class="d" text-anchor="middle">运行时依赖：无</text>
+  <text x="660" y="300" class="s" text-anchor="middle">QuickJS 沙箱与脚本运行时</text>
+  <text x="660" y="318" class="s" text-anchor="middle">classify / generateImages</text>
+
+  <rect x="780" y="236" width="160" height="112" class="box" fill="#e9f7ef" stroke="#2f9e6b"/>
+  <text x="860" y="258" class="t" text-anchor="middle">packages/mcp</text>
+  <text x="860" y="278" class="d" text-anchor="middle">运行时依赖：无</text>
+  <text x="860" y="300" class="s" text-anchor="middle">MCP 客户端、</text>
+  <text x="860" y="318" class="s" text-anchor="middle">stdio / streamable HTTP</text>
+
+  <!-- model layer -->
+  <rect x="120" y="372" width="240" height="112" class="box" fill="#fff4e2" stroke="#d9861f"/>
+  <text x="138" y="394" class="t">packages/ai　pi-ai</text>
+  <text x="138" y="412" class="d">依赖：pi-telemetry, typebox</text>
+  <text x="138" y="432" class="s">统一 Model / Provider / Api 抽象、</text>
+  <text x="138" y="450" class="s">12 个流事件、usage 与成本、模型目录</text>
+
+  <rect x="380" y="372" width="200" height="112" class="box" fill="#fff4e2" stroke="#d9861f"/>
+  <text x="480" y="394" class="t" text-anchor="middle">packages/durable</text>
+  <text x="480" y="412" class="d" text-anchor="middle">依赖：chord, pi-ai, codemode,</text>
+  <text x="480" y="428" class="d" text-anchor="middle">pi-telemetry, typebox</text>
+  <text x="480" y="448" class="s" text-anchor="middle">实验性：先提交后展示的</text>
+  <text x="480" y="466" class="s" text-anchor="middle">会话 / 任务 / 文档运行时</text>
+
+  <rect x="600" y="372" width="160" height="112" class="box" fill="#fff4e2" stroke="#d9861f"/>
+  <text x="680" y="394" class="t" text-anchor="middle">packages/env</text>
+  <text x="680" y="412" class="d" text-anchor="middle">依赖：chord, durable</text>
+  <text x="680" y="432" class="s" text-anchor="middle">远程执行环境</text>
+  <text x="680" y="450" class="s" text-anchor="middle">Rust 守护进程</text>
+
+  <!-- base layer -->
+  <rect x="120" y="508" width="240" height="104" class="box" fill="#f0e9fb" stroke="#7a5bc4"/>
+  <text x="138" y="530" class="t">packages/telemetry</text>
+  <text x="138" y="548" class="d">运行时依赖：无</text>
+  <text x="138" y="568" class="s">厂商中立的遥测契约、</text>
+  <text x="138" y="586" class="s">参考实现与一致性测试</text>
+
+  <rect x="380" y="508" width="200" height="104" class="box" fill="#f0e9fb" stroke="#7a5bc4"/>
+  <text x="480" y="530" class="t" text-anchor="middle">packages/chord</text>
+  <text x="480" y="548" class="d" text-anchor="middle">依赖：pi-telemetry, typebox</text>
+  <text x="480" y="568" class="s" text-anchor="middle">热插拔宿主运行时：</text>
+  <text x="480" y="586" class="s" text-anchor="middle">契约 / 复制状态 / 跨进程 RPC</text>
+
+  <rect x="600" y="508" width="160" height="104" class="box" fill="#f0e9fb" stroke="#7a5bc4"/>
+  <text x="680" y="530" class="t" text-anchor="middle">packages/evals</text>
+  <text x="680" y="550" class="d" text-anchor="middle">无包依赖</text>
+  <text x="680" y="570" class="s" text-anchor="middle">源码 import</text>
+  <text x="680" y="588" class="s" text-anchor="middle">coding-agent</text>
+
+  <!-- direct dependency arrows (left chain) -->
+  <path class="edge" d="M 240 204 L 240 236"/>
+  <path class="edge" d="M 240 348 L 240 372"/>
+  <path class="edge" d="M 240 484 L 240 508"/>
+
+  <!-- legend -->
+  <rect x="780" y="372" width="200" height="112" class="box" fill="#ffffff" stroke="#c8d2dc"/>
+  <text x="880" y="394" class="t" text-anchor="middle">两条产品线</text>
+  <text x="880" y="414" class="s" text-anchor="middle">终端：coding-agent 向下</text>
+  <text x="880" y="432" class="s" text-anchor="middle">服务：env → durable → chord</text>
+  <text x="880" y="450" class="s" text-anchor="middle">两线互不依赖，</text>
+  <text x="880" y="468" class="s" text-anchor="middle">只共享 pi-ai 与 codemode</text>
+
+  <rect x="740" y="76" width="316" height="128" class="box" fill="#ffffff" stroke="#c8d2dc"/>
+  <text x="756" y="98" class="t">读图要点</text>
+  <text x="756" y="120" class="s">coding-agent 只依赖运行层与模型层的 5 个包；</text>
+  <text x="756" y="138" class="s">它不依赖 chord / durable / env / telemetry。</text>
+  <text x="756" y="160" class="s">构建拓扑序（根 package.json 的 build）：</text>
+  <text x="756" y="182" class="d">telemetry → chord → tui → codemode → mcp →</text>
+  <text x="756" y="196" class="d">ai → durable → env → agent → coding-agent</text>
+</svg>
